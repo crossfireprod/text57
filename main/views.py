@@ -4,8 +4,12 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.template import loader
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from sendgrid.helpers.mail import *
+from twilio.twiml.messaging_response import MessagingResponse
 
-from main.models import User, Recipient
+from main.models import User, Recipient, Replies
 
 
 # Create your views here.
@@ -64,16 +68,26 @@ def send(request):
 
 
 def dispatch(request):
-    for recipient in Recipient.objects.all():
-        message = settings.CLIENT.messages.create(
+    message = request.POST.get('message')
+    recipients = Recipient.objects.all()
+    for recipient in recipients:
+        text = settings.TWILIO_CLIENT.messages.create(
             to=recipient.phone,
-            from_=settings.PHONE_NUMBER,
-            body=request.POST.get('message'))
+            from_=settings.TWILIO_PHONE_NUMBER,
+            body=message)
+    dispatch_receipt(User.objects.get(userid=request.session['userid']).username, recipients, message)
     return redirect('/')
 
 
-def reply(request):
-    return redirect('/replies')
+def dispatch_receipt(user, recipients, message):
+    context = {'user': user,
+               'cost': 0.0075 * len(recipients),
+               'message': message}
+    subject = "SMS Receipt"
+    content = Content("text/html", loader.get_template('receipt.html').render(context))
+    for email in settings.RECEIPT_RECIPIENTS:
+        mail = Mail(settings.SENDGRID_FROM_EMAIL, subject, email, content)
+        settings.SENDGRID_CLIENT.client.mail.send.post(request_body=mail.get())
 
 
 def replies(request):
@@ -81,7 +95,20 @@ def replies(request):
         flash(request, 'Sorry, you do not have the correct permissions to perform this task.')
         return redirect('/')
     template = loader.get_template('replies.html')
-    return HttpResponse(template.render(get_context(request), request))
+    context = get_context(request)
+    for reply in Replies.objects.all():
+
+    context['phones'] =
+    return HttpResponse(template.render(context, request))
+
+
+@require_POST
+@csrf_exempt
+def incoming_message(request):
+    resp = MessagingResponse()
+    reply = Replies(phone=request.POST.get('From'), message=request.POST.get('Body'))
+    reply.save()
+    return HttpResponse(resp)
 
 
 def correct_permissions(request, needed_permissions):
@@ -115,4 +142,3 @@ def get_context(request):
     if 'userid' in request.session:
         context['username'] = User.objects.get(userid=request.session['userid']).username
     return context
-

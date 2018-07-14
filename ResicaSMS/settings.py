@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import sendgrid
+from sendgrid.helpers.mail import *
 from twilio.rest import Client
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -129,12 +131,17 @@ INITIAL_TEXT = 'Hello, thank you for signing up for the Resica Falls Scout Reser
                'updated about any happenings in camp. We hope you have a great time at Resica! '
 
 # Set up Twilio
-ACCOUNT_SID = "ACb7751a19f4658fe6ec8d4dc20b4bb5a3"
-AUTH_TOKEN = "8bc98cb210a7cf49674b5749804fe5a9"
-CLIENT = Client(ACCOUNT_SID, AUTH_TOKEN)
-PHONE_NUMBER = '+12156082357'
+TWILIO_ACCOUNT_SID = "ACb7751a19f4658fe6ec8d4dc20b4bb5a3"
+TWILIO_AUTH_TOKEN = "8bc98cb210a7cf49674b5749804fe5a9"
+TWILIO_CLIENT = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+TWILIO_PHONE_NUMBER = '+12156082357'
+
+# Set up SendGrid
+SENDGRID_API_KEY = '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'
+SENDGRID_CLIENT = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY)
+SENDGRID_FROM_EMAIL = Email("sms@resicafalls.org")
 
 # Receipt recipients
 RECEIPT_RECIPIENTS = [
-    'pearatme@gmail.com',
+    Email("pearatme@gmail.com"),
 ]

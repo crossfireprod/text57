@@ -12,4 +12,5 @@ urlpatterns = [
     path('send', views.send, name='send'),
     path('dispatch', views.dispatch, name='dispatch'),
     path('replies', views.replies, name='replies'),
+    path('incoming_message', views.incoming_message, name='incoming_message')
 ]

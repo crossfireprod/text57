@@ -20,4 +20,4 @@ class Recipient(models.Model):
 
 class Replies(models.Model):
     phone = models.IntegerField(default=0)
-    message = models.CharField(max_length=161)
+    message = models.CharField(max_length=1601)
