@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <form id="login-form" action="/enroll" method="post">{% csrf_token %}
+        <input class="form" type="text" name="name" id="register-name" placeholder="Joseph Doe" required>
+        <input class="form" type="number" name="unit" id="register-unit" placeholder="Unit Number" required>
+        <input class="form" type="tel" name="phone" id="register-telephone" placeholder="000-000-0000" required>
+        <select  class="form" name="group" placeholder="Group" required>
+            <option value="stf">Staff</option>
+            <option value="dir">Directors</option>
+            <option value="adm">Administration</option>
+            <option value="wk1">Week 1 Campers</option>
+            <option value="wk2">Week 2 Campers</option>
+            <option value="wk3">Week 3 Campers</option>
+            <option value="wk4">Week 4 Campers</option>
+            <option value="wk5">Week 5 Campers</option>
+            <option value="wk6">Week 6 Campers</option>
+            <option value="wk7">Week 7 Campers</option>
+        </select>
+        <button type="submit" class="form button" id="register-button">Submit</button>
+    </form>
+{% endblock %}
