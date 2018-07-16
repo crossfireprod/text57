@@ -126,9 +126,23 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
+#Groups
+GROUPS = [
+    ['stf', '6-15-18', '8-16-18'],
+    ['dir', '6-8-18', '8-16-18'],
+    ['stf', '5-18-18', '8-16-18'],
+    ['wk1', '6-23-18', '6-29-18'],
+    ['wk2', '6-30-18', '7-6-18'],
+    ['wk3', '7-7-18', '7-13-18'],
+    ['wk4', '7-14-18', '7-20-18'],
+    ['wk5', '7-21-18', '7-27-18'],
+    ['wk6', '7-28-18', '8-3-18'],
+    ['wk7', '8-4-18', '8-10-18'],
+]
+
 # Joining text
-INITIAL_TEXT = 'Hello, thank you for signing up for the Resica Falls Scout Reservation SMS service. We will keep you ' \
-               'updated about any happenings in camp. We hope you have a great time at Resica! '
+INITIAL_TEXT = 'Welcome to the Resica Falls Texting Service. We will provide you with updates throughout your stay at ' \
+               'camp. If you would like to stop receiving texts respond STOP '
 
 # Set up Twilio
 TWILIO_ACCOUNT_SID = "ACb7751a19f4658fe6ec8d4dc20b4bb5a3"

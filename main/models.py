@@ -21,3 +21,8 @@ class Recipient(models.Model):
 class Replies(models.Model):
     phone = models.IntegerField(default=0)
     message = models.CharField(max_length=1601)
+
+
+class SentMessages(models.Model):
+    sent_to = models.CharField(max_length=16)
+    message = models.CharField(max_length=200)

@@ -1,18 +1,15 @@
 import hashlib
+from datetime import datetime
 
-from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from sendgrid.helpers.mail import *
 from twilio.twiml.messaging_response import MessagingResponse
 
-from main.models import User, Recipient, Replies
+from main.models import Recipient, Replies
+from main.utils import *
 
-
-# Create your views here.
 
 def index(request):
     template = loader.get_template('index.html')
@@ -52,10 +49,7 @@ def enroll(request):
     recipient = Recipient(name=request.POST.get('name'), phone=request.POST.get('phone'), unit=request.POST.get('unit'),
                           group=request.POST.get('group'))
     recipient.save()
-    message = settings.CLIENT.messages.create(
-        to=recipient.phone,
-        from_=settings.PHONE_NUMBER,
-        body=settings.INITIAL_TEXT)
+    send_text(recipient.phone, settings.INITIAL_TEXT)
     return redirect('/register')
 
 
@@ -71,23 +65,10 @@ def dispatch(request):
     message = request.POST.get('message')
     recipients = Recipient.objects.all()
     for recipient in recipients:
-        text = settings.TWILIO_CLIENT.messages.create(
-            to=recipient.phone,
-            from_=settings.TWILIO_PHONE_NUMBER,
-            body=message)
-    dispatch_receipt(User.objects.get(userid=request.session['userid']).username, recipients, message)
+        send_text(recipient.phone, message)
+    print(get_groups(datetime.now().isoformat()))
+    send_reciept(User.objects.get(userid=request.session['userid']).username, recipients, message)
     return redirect('/')
-
-
-def dispatch_receipt(user, recipients, message):
-    context = {'user': user,
-               'cost': 0.0075 * len(recipients),
-               'message': message}
-    subject = "SMS Receipt"
-    content = Content("text/html", loader.get_template('receipt.html').render(context))
-    for email in settings.RECEIPT_RECIPIENTS:
-        mail = Mail(settings.SENDGRID_FROM_EMAIL, subject, email, content)
-        settings.SENDGRID_CLIENT.client.mail.send.post(request_body=mail.get())
 
 
 def replies(request):
@@ -96,9 +77,9 @@ def replies(request):
         return redirect('/')
     template = loader.get_template('replies.html')
     context = get_context(request)
-    for reply in Replies.objects.all():
+    #    for reply in Replies.objects.all():
 
-    context['phones'] =
+    #    context['phones'] =
     return HttpResponse(template.render(context, request))
 
 
@@ -109,36 +90,3 @@ def incoming_message(request):
     reply = Replies(phone=request.POST.get('From'), message=request.POST.get('Body'))
     reply.save()
     return HttpResponse(resp)
-
-
-def correct_permissions(request, needed_permissions):
-    if 'userid' not in request.session:
-        return False
-    else:
-        user = User.objects.get(userid=request.session['userid'])
-        if user is None:
-            logout()
-            return False
-        elif user.powerlevel < needed_permissions:
-            return False
-        else:
-            return True
-
-
-def flash(request, message):
-    request.session.modified = True
-    if 'flashes' in request.session:
-        request.session['flashes'].append(message)
-    else:
-        request.session['flashes'] = [message]
-
-
-def get_context(request):
-    context = {}
-    if 'flashes' in request.session:
-        context['flashes'] = request.session['flashes']
-        del request.session['flashes']
-        request.session.modified = True
-    if 'userid' in request.session:
-        context['username'] = User.objects.get(userid=request.session['userid']).username
-    return context
