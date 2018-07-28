@@ -33,7 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'oanev.com',
-    '178.128.155.35'
+    '178.128.155.35',
+    '127.0.0.1'
 ]
 
 # Application definition
