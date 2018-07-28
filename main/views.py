@@ -2,7 +2,7 @@ import hashlib
 from datetime import datetime
 
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from twilio.twiml.messaging_response import MessagingResponse
@@ -12,13 +12,11 @@ from main.utils import *
 
 
 def index(request):
-    template = loader.get_template('index.html')
-    return HttpResponse(template.render(get_context(request), request))
+    return render(request, 'index.html', get_context(request))
 
 
 def login(request):
-    template = loader.get_template('login.html')
-    return HttpResponse(template.render(get_context(request), request))
+    return render(request, 'login.html', get_context(request))
 
 
 def authenticate(request):
@@ -41,8 +39,7 @@ def logout(request):
 
 
 def register(request):
-    template = loader.get_template('register.html')
-    return HttpResponse(template.render(get_context(request), request))
+    return render(request, 'register.html', get_context(request))
 
 
 def enroll(request):
@@ -53,12 +50,15 @@ def enroll(request):
     return redirect('/register')
 
 
+def register_multiple(request):
+    return render(request, 'register.html', get_context(request))
+
+
 def send(request):
     if not correct_permissions(request, 2):
         flash(request, 'Sorry, you do not have the correct permissions to perform this task.')
         return redirect('/')
-    template = loader.get_template('send.html')
-    return HttpResponse(template.render(get_context(request), request))
+    return render(request, 'send.html', get_context(request))
 
 
 def dispatch(request):
@@ -75,12 +75,11 @@ def replies(request):
     if not correct_permissions(request, 2):
         flash(request, 'Sorry, you do not have the correct permissions to perform this task.')
         return redirect('/')
-    template = loader.get_template('replies.html')
     context = get_context(request)
     #    for reply in Replies.objects.all():
 
     #    context['phones'] =
-    return HttpResponse(template.render(context, request))
+    return render(request, 'replies.html', context)
 
 
 @require_POST

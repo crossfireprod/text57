@@ -31,7 +31,10 @@ SECRET_KEY = 'a%ea#9ihn11=e@n9gi6@0d26r61v+gh)6jui-=c4i2g52dw31e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'oanev.com',
+    '178.128.155.35'
+]
 
 # Application definition
 

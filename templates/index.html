@@ -3,6 +3,47 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Resica Falls SMS</h1>
-    <div>This website provides the SMS service used at Resica Falls Scout Reservation. If you would like to recieve text updates from Resica Falls click <a href="/register">here</a>. </div>
+    <div class="section">
+        <h1>Meet Oanev</h1>
+        <p>Oanev is built by passionate people looking to do a good turn for their favorite organizations. We do this by
+            providing a needed service for communication that is provided as inexpensively as possible to consumers. We
+            let
+            you easily communicate with costumers through simplicity.</p>
+        <ul class="list">
+            <li><h3 class="list-header">Security</h3><p> - Security is our first priority. We worry so you don't need to.</p></li>
+            <li><h3 class="list-header">Speed</h3><p> - Oanev is extremely fast. We want you to be able to get all messages
+                to your users as soon as possible.</p>
+            </li>
+            <li><h3 class="list-header">Reliability</h3><p> - Oanev is available 24/7 so when that urgent message needs to
+                be sent Oanev will be there.</p>
+            </li>
+        </ul>
+    </div>
+    <hr class="divider">
+    <div class="section">
+        <h1>Stay in the Loop</h1>
+        <p>Subscribe to our mailing list to stay up to date on all news Oanev.</p>
+        <form id="join-mailing-list-form" action="/join/mailing-list" method="post">
+            <input id="join-mailing-list-email-input" class="unselectable" type="email" name="email"
+                   placeholder="john.doe@example.com" required>
+            <button id="join-mailing-list-submit" class="button unselectable">Submit</button>
+        </form>
+    </div>
+
+    </div>
+    <div id="side-bar">
+        <div class="section">
+            <h2>Latest News</h2>
+            <hr class="divider">
+            <h3><a>Oanev Entering Beta</a></h3>
+            <p>Oanev will now start testing the SMS service with two organizations.</p>
+            <p>Posted by Joseph G on June 17, 2018</p>
+        </div>
+        <div class="section">
+            <h2>Getting Started</h2>
+            <hr class="divider">
+            <p><a href="/docs/intro-guide">Introductory Guide</a></p>
+            <p><a href="/docs/api-intro">Guide to the API</a></p>
+        </div>
+    </div>
 {% endblock %}
