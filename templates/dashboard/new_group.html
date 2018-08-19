@@ -1,0 +1,29 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+    <div id="new-group">
+        <h1>Create New Group</h1>
+        <form method="post" action="/dashboard/{{ orgid }}/groups/create">{% csrf_token %}
+            <div id="form">
+                <p>
+                    <input name="name" class="medium-input" placeholder="Name">
+
+                    <textarea name="description" class="large-input" placeholder="Description"></textarea>
+
+                    <input name="active-time-start" type="date" class="medium-input">
+                </p>
+                <div id="date-to"><h3>to</h3></div>
+                <p>
+                    <input name="active-time-end" type="date" class="medium-input">
+
+                    <textarea name="phones" id="phones" class="large-input" placeholder="123-456-7890, 098-765-4321"></textarea>
+                </p>
+            </div>
+
+            <p>
+                <button class="hoverable">Create</button>
+            </p>
+        </form>
+    </div>
+
+{% endblock %}

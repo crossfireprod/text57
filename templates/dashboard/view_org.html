@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div id="view-org">
+        <h1>{{ name }}</h1>
+        <h3><span contenteditable="true" class="hidden-form">{{ description }}</span></h3>
+        <p>Initial Text:</p>
+        <p><span contenteditable="true" class="hidden-form">{{ initial_text }}</span></p>
+        <div id="members">
+            <div class="table">
+                <div id="" class="table-row">
+                    <div id="name" class="table-cell table-header name "><h3>Name</h3></div>
+                    <div id="send" class="table-cell img-holder table-header send"><img
+                            src="{% static 'images/icons/send.png' %}"></div>
+                    <a id="new-member" class="table-cell img-holder table-header right hoverable"><img
+                            src="{% static 'images/icons/add.png' %}"></a>
+                </div>
+                {% for user in users %}
+                    <div class="table-row">
+                        <div class="table-cell name"><p>{{ user.name }}</p></div>
+                        <a href="mailto:{{ user.email }}"
+                                                        class="table-cell img-holder send hoverable"><img
+                                src="{% static 'images/icons/send.png' %}"></a>
+                    <a class="table-cell img-holder right hoverable"><img
+                            src="{% static 'images/icons/settings.png' %}"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

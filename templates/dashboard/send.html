@@ -1,0 +1,15 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+    <div id="send">
+        <form action="/dispatch" method="post">{% csrf_token %}
+            <p><textarea></textarea></p>
+            <p>
+                <button class="hoverable">Send</button>
+            </p>
+        </form>
+        <p>
+            <button class="hoverable">Save</button>
+        </p>
+    </div>
+{% endblock %}
