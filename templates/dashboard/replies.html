@@ -1,0 +1,27 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Replies{% endblock %}
+
+{% block content %}
+    <div id="replies">
+        {% for key, value in numbers %}
+            <div class="phone">
+                <div class="header">
+                    <h3>{{ key }}</h3>
+                </div>
+                <div class="middle">
+                    {% for text in value %}
+                        <p class="reply">{{ text }}</p>
+                    {% endfor %}
+                    <p class="returned">Please check unamilodge.org</p>
+                </div>
+                <div class="footer">
+                    <p><input></p>
+                    <a href="/dashboard/{{ orgid }}/replies/send" class="hoverable"><img
+                            src="{% static 'images/icons/send.png' %}"></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

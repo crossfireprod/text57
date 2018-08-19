@@ -1,0 +1,27 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div id="groups">
+        <h1>{{ name }}'s Groups</h1>
+        <div class="table">
+            <div id="" class="table-row">
+                <div id="name" class="table-cell table-header name "><h3>Name</h3></div>
+                <div id="description" class="table-cell table-header description"><h3>Description</h3></div>
+                <div id="people" class="table-cell img-holder table-header people"><img
+                        src="{% static 'images/icons/people.png' %}"></div>
+                <a href="/dashboard/{{ orgid }}/groups/new"
+                   class="table-cell img-holder table-header hoverable"><img src="{% static 'images/icons/add.png' %}"></a>
+            </div>
+                {% for group in groups %}
+            <div class="table-row">
+                <a href="/dashboard/{{ orgid }}/groups/" class="hoverable group-link">
+                    <div class="table-cell name"><p>NOAC 2018 Contingent</p></div>
+                    <div class="table-cell description"><p>The Unami Lodge NOAC Contingent</p></div>
+                    <div class="table-cell people"><p>48</p></div>
+                </a>
+                <a class="table-cell img-holder hoverable settings"><img src="{% static 'images/icons/settings.png' %}"></a>
+            </div>{% endfor %}
+        </div>
+    </div>
+{% endblock %}

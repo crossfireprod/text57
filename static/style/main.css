@@ -85,25 +85,25 @@ ul {
     #title-bar h3 {
       width: 77.777%; } }
 
-#content {
+#core {
   margin: 5.555%;
   width: 55.555%;
   display: inline-block; }
-  #content h1 {
+  #core h1 {
     color: #404040;
     margin: 0; }
-  #content p {
+  #core p {
     margin: 16px 0;
     color: #404040; }
-  #content form {
+  #core form {
     display: block;
     width: 100%; }
-  #content .list h3 {
+  #core .list h3 {
     color: #77EC92;
     display: inline; }
-  #content .list p {
+  #core .list p {
     display: inline; }
-  #content #join-mailing-list-email-input {
+  #core #join-mailing-list-email-input {
     width: calc(100% - 126px);
     height: 36px;
     margin: 0;
@@ -113,7 +113,7 @@ ul {
     color: #404040;
     font-size: 1em;
     font-family: 'PT Sans', sans-serif; }
-  #content #join-mailing-list-submit {
+  #core #join-mailing-list-submit {
     width: 96px;
     height: 36px;
     padding: 0;
@@ -182,4 +182,4 @@ ul {
   #footer .footer-section li {
     margin-bottom: 12px; }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=main.css.map */

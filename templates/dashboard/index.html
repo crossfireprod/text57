@@ -1,0 +1,10 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+    {% for org in orgs %}
+        <a class="org-card" href="/dashboard/{{ org.orgid }}">
+            <h3>{{ org.name }}</h3>
+            <p>{{ org.description }}</p>
+        </a>
+    {% endfor %}
+{% endblock %}

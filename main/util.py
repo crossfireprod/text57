@@ -1,23 +1,9 @@
+import random
+
 from django.conf import settings
+from ResicaSMS.settings import B64_DIGITS
 from django.template import loader
 from sendgrid.helpers.mail import *
-
-from main.models import User
-
-
-def correct_permissions(request, needed_permissions):
-    if 'userid' not in request.session:
-        return False
-    else:
-        user = User.objects.get(userid=request.session['userid'])
-        if user is None:
-            del request.session['userid']
-            request.session.modified = True
-            return False
-        elif user.powerlevel < needed_permissions:
-            return False
-        else:
-            return True
 
 
 def send_text(phone, message):
@@ -32,7 +18,7 @@ def send_reciept(user, recipients, message):
                'cost': 0.0075 * len(recipients),
                'message': message}
     subject = "SMS Receipt"
-    content = Content("text/html", loader.get_template('receipt.html').render(context))
+    content = Content("text/html", loader.get_template('main/receipt.html').render(context))
     for email in settings.RECEIPT_RECIPIENTS:
         mail = Mail(settings.SENDGRID_FROM_EMAIL, subject, email, content)
         settings.SENDGRID_CLIENT.client.mail.send.post(request_body=mail.get())
@@ -48,12 +34,8 @@ def flash(request, message):
 
 def get_context(request):
     context = {}
-    if 'flashes' in request.session:
-        context['flashes'] = request.session['flashes']
-        del request.session['flashes']
-        request.session.modified = True
-    if 'userid' in request.session:
-        context['username'] = User.objects.get(userid=request.session['userid']).username
+    """if 'userid' in request.session:
+        context['username'] = User.objects.get(userid=request.session['userid']).username"""
     return context
 
 
@@ -62,3 +44,25 @@ def get_groups(date):
     for group in settings.GROUPS:
         if group[1] < date < group[2]:
             groups.append(group[0])
+
+
+def convert_to_b64(int):
+    result = ''
+    while int:
+        int, r = int // 64, int % 64
+        result = B64_DIGITS[r] + result
+    return result
+
+
+def convert_from_b64(string):
+    result = 0
+    for digit in range(0, len(string)):
+        result += B64_DIGITS.index(string[-digit - 1]) * 64 ** digit
+    return result
+
+
+def random_b64_number(length):
+    result = ''
+    for a in range(0, length):
+        result += B64_DIGITS[random.randint(0, 64)]
+    return result

@@ -1,7 +1,5 @@
 from django import template
 
-from main.models import User
-
 register = template.Library()
 
 
