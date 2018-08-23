@@ -1,53 +1,16 @@
+{% extends "main/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content=Oanev"/>
-
+{% block style %}
     <link rel="stylesheet" href="{% static 'style/dashboard.css' %}">
+{% endblock %}
 
-    <script src="{% static 'scripts/dashboard/interface.js' %}"></script>
+{% block scripts %}
+    <link rel="script" href="{% static 'scripts/dashboard/interface.js' %}">
+{% endblock %}
 
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
-    <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#e6e6e6">
-    <meta name="theme-color" content="#ffffff">
+{% block core %}
+    {% block content %}
 
-    <title> Dashboard | Oanev</title>
-</head>
-<body>
-<div id="side-bar">
-    {% if orgid is not None %}
-        <a href="/dashboard" id="title-bar" class="hoverable disappearable">Oanev</a>
-    {% else %}
-        <a href="/" id="title-bar" class="hoverable disappearable">Oanev</a>
-    {% endif %}
-    <a href="javascript:toggleSidebar()" class="icon-link hoverable"><img class="icon"
-            src="{% static 'images/icons/menu.png' %}" %}></a>
-    <div id="name-bar">
-        <a href="/user" class="hoverable disappearable" id="name">Joseph G</a>
-        <a href="/users/logout" class="hoverable disappearable" id="logout-link"><img class="icon"
-                src="{% static 'images/icons/exit.png' %}"
-                id="logout"></a>
-        <a href="/user/settings" class="icon-link hoverable disappearable" id="settings-link"><img class="icon"
-                src="{% static 'images/icons/settings.png' %}" %}
-                class="settings disappearable" id="settings"></a>
-    </div>
-    {% if orgid is not None %}
-        <a href="/dashboard/{{ orgid }}" class="hoverable disappearable" id="org-bar">{{ name }}</a>
-        <a href="/dashboard/{{ orgid }}/send" class="text-item hoverable disappearable">Send</a>
-        <a href="/dashboard/{{ orgid }}/replies" class="text-item hoverable disappearable">Replies</a>
-        <a href="/dashboard/{{ orgid }}/groups" class="text-item hoverable disappearable">Groups</a>
-    {% endif %}
-</div>
-<div id="core">
-    {% block content %}{% endblock %}
-</div>
-</body>
-</html>
+    {% endblock %}
+{% endblock %}

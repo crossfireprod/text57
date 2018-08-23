@@ -1,74 +1,42 @@
 {% load static %}
-{% load main_filters %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Basic Page Needs
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <meta name="description" content=Oanev"/>
-
-    <link rel="stylesheet" href="{% static 'style/main.css' %}">
-
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
-    <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#e6e6e6">
-    <meta name="theme-color" content="#ffffff">
-
     <title>{% block title %}{% endblock %} | Oanev</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="{% static 'style/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'style/skeleton.css' %}">
+<link rel="stylesheet" href="{% static 'style/main.css' %}">
+    {% block style %}{% endblock %}
+
+    <!-- Scripts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    {% block scripts %}{% endblock %}
+
+    <!-- Favicon
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
 </head>
 <body>
-<div id="nav-bar">
-    <ul>
-        <li id="nav-bar-features"><a href="/">Features</a></li>
-        <li id="nav-bar-pricing"><a href="/">Pricing</a></li>
-        <li id="nav-bar-docs"><a href="/">Docs</a></li>
-        <li id="nav-bar-support"><a href="/">Support</a></li>
-        <li id="nav-bar-menu"><a href="javascript:openMenu()">Menu</a></li>
-        <div id="nav-bar-user">
-            <li id="nav-bar-login"><a href="/login">Log In</a></li>
-            <li id="nav-bar-signup"><a href="/signup">Sign Up</a></li>
-        </div>
-    </ul>
-</div>
-<a href="/">
-    <div id="title-bar">
-        <h1>Oanev</h1>
-        <h3>Communicating your ideas, to your users.</h3>
-    </div>
-</a>
-<div id="core">
-    {% block core %}{% endblock %}
-</div>
-<div id="footer">
-    <ul id="footer-section-list">
-        <li class="footer-section">
-            <ul>
-                <li><h3>Learn More</h3></li>
-                <li><a href="github.com">About Oanev</a></li>
-                <li><a href="twitter.com">Getting Started with Oanev</a></li>
-                <li><a href="twitter.com">Get in Touch</a></li>
-            </ul>
-        </li>
-        <li class="footer-section">
-            <ul>
-                <li><h3>Get Involved</h3></li>
-                <li><a href="github.com">Report A Bug</a></li>
-                <li><a href="twitter.com">Report A Security Concern</a></li>
-            </ul>
-        </li>
-        <li class="footer-section">
-            <ul>
-                <li><h3>Follow Us</h3></li>
-                <li><a href="github.com">Github</a></li>
-                <li><a href="twitter.com">Twitter</a></li>
-                <li><a>Join the Newsletter</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+{% block core %}{% endblock %}
 </body>
 </html>
+
