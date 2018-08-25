@@ -1,284 +1,29 @@
-$blue: #77ECD4;
-$green: #77EC92;
-$black: #404040;
-$grey: #CCCCCC;
-
-html, body {
-  margin: 0;
-  padding: 0;
-
-}
-
-h1, h2 {
-  font-family: 'PT Serif', serif;
-
-}
-
-h3, a, p {
-  font-family: 'PT Sans', sans-serif;
-
-}
-
-ul {
-  list-style-type: none;
-}
-
-.unselectable {
-  outline: none;
-}
-
-#nav-bar {
-
-  height: 52px;
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 0 0 5.555%;
-    height: 52px;
-  }
-
-  li {
-    float: left;
-    margin: 0;
-    a {
-      min-width: 5.555%;
-      display: block;
-      padding: 16px;
-      text-align: center;
-      text-decoration: none;
-      color: $black;
-    }
-
-    a:hover {
-      border-bottom: 4px white solid;
-    }
-  }
-
-  #nav-bar-user {
-    float: right;
-    margin-right: 5.555%;
-  }
-
-  @media (min-width: 925px) {
-    #nav-bar-menu {
-      display: none;
-    }
-  }
-
-  @media (max-width: 924px) {
-
-    #nav-bar-features, #nav-bar-pricing, #nav-bar-docs, #nav-bar-support {
-      display: none;
-    }
-  }
-
-  @media (max-width: 450px) {
-    #nav-bar-login {
-      display: none;
-    }
-  }
-
-  @media (max-width: 300px) {
-    #nav-bar-signup {
-      display: none;
-    }
-  }
-}
+$green: #77EC91;
+$light-green: #A4F6B6;
+$dark-green: #52DF71;
 
 #title-bar {
-  width: 88%;
-  height: 120px;
-  background: $green;
-  padding: 24px 5.555%;
+  padding: 1em 0;
+  background-color: $green;
+  margin-bottom: 1em;
 
-  h1, h3 {
+  h4 {
     color: white;
     margin: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-    text-underline: none;
-  }
-
-  h1 {
-    font-size: 48px;
-    margin: 8px 0;
-  }
-  h3 {
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
-
-  @media (min-width: 800px) {
-    height: 80px;
-
-    h1 {
-      margin: 0;
-      width: auto;
-      display: inline;
-      float: left;
-    }
-
-    h3 {
-      margin-top: 12px;
-      margin-left: 24px;
-      width: 92px;
-      display: inline-block;
-    }
-  }
-
-  @media (max-width: 400px) {
-    h3 {
-      width: 77.777%;
-    }
-  }
-}
-
-#core {
-  margin: 5.555%;
-  width: 55.555%;
-  display: inline-block;
-
-  h1 {
-    color: $black;
-    margin: 0;
-  }
-
-  p {
-    margin: 16px 0;
-    color: $black;
-  }
-
-  form {
-    display: block;
-    width: 100%;
-  }
-
-  .list {
-
-    h3 {
-      color: $green;
-      display: inline;
-    }
-
-    p {
-      display: inline;
-    }
-  }
-  #join-mailing-list-email-input {
-    width: calc(100% - 126px);
-    height: 36px;
-    margin: 0;
-    padding: 0 12px;
-    border: 1px solid $grey;
-    border-radius: 8px;
-    color: $black;
-    font-size: 1em;
-    font-family: 'PT Sans', sans-serif;
-  }
-
-  #join-mailing-list-submit {
-    width: 96px;
-    height: 36px;
-    padding: 0;
-    border: 1px solid $green;
-    border-radius: 8px;
-    background-color: $green;
-    font-size: 1em;
-    color: white;
-    font-family: 'PT Sans', sans-serif;
-  }
-}
-
-.divider {
-  margin: 36px 11.111%;
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid $green;
-  padding: 0;
-}
-
-#side-bar {
-  float: right;
-  width: calc(22.222% - 1px);
-  padding: 5.555%;
-  color: $black;
-  border-left: 1px solid $green;
-
-  h2 {
-    text-align: center;
-  }
-
-  p {
-    font-size: 12px;
-  }
-
-  a {
-    color: $black;
-
-  }
-
-  #side-bar-post-info {
-    color: $grey;
-  }
-
-  .divider {
-    margin: 16px 11.111%;
-  }
-
-  .section {
-    margin-bottom: 36px;
-  }
-}
-
-@media (max-width: 650px) {
-  #content {
-    width: 77.777%;
-  }
-  #side-bar {
-    display: none;
   }
 }
 
 #footer {
-  background: $green;
-  width: 100%;
-  color: white;
+  border-top: $green 1px solid;
+  padding: 1em 0;
+  margin-top: 1em;
 
-  @media (min-width: 650px) {
-    height: 216px;
-    padding: 0;
-    .footer-section {
-      float: left;
-      width: 22%;
-      margin-bottom: 0;
-      margin-left: 3.703%;
-    }
+  #center {
+    text-align: center;
   }
 
-  @media (max-width: 649px) {
-    padding: 32px 0;
-    .footer-section {
-      width: 88.888%;
-      margin-bottom: 48px;
-    }
+  #right {
+    text-align: right;
   }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .footer-section {
-
-    li {
-      margin-bottom: 12px;
-    }
-
-  }
-
 }
-

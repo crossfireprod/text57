@@ -2,11 +2,24 @@
 
 {% block title %}Login{% endblock %}
 
-{% block core %}
-    <form id="login-form" action="/authenticate" method="post">{% csrf_token %}
-        <input class="form" type="text" name="username" id="login-username" placeholder="Username" required>
-        <input class="form" type="password" name="password" id="login-password" placeholder="••••••••" required>
-        <button type="submit" class="form button" id="login-button">Login</button>
-    </form>
-
+{% block content %}
+    <div class="container">
+        <form id="login-form" action="/users/login/post" method="post"
+              class="offset-by-three column six columns">{% csrf_token %}
+            <div class="offset-by-two eight columns">
+                <h3>Login</h3>
+                <div class="row u-full-width">
+                    <label>Email</label>
+                    <input class="u-full-width" type="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="row u-full-width">
+                    <label>Password</label>
+                    <input class="u-full-width" type="password" name="password" placeholder="••••••••" required>
+                </div>
+                <div class="row u-full-width">
+                    <button class="six columns button-primary" type="submit" id="login-button">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock %}

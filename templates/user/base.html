@@ -1,2 +1,10 @@
-{% extends "main/base.html" %}
+{% extends "main/wrappers.html" %}
+{% load static %}
 
+{% block style %}
+    <link rel="stylesheet" href="{% static 'style/dashboard.css' %}">
+{% endblock %}
+
+{% block scripts %}
+    <link rel="script" href="{% static 'scripts/dashboard.js' %}">
+{% endblock %}

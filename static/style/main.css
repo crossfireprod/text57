@@ -1,185 +1,24 @@
-html, body {
-  margin: 0;
-  padding: 0; }
-
-h1, h2 {
-  font-family: 'PT Serif', serif; }
-
-h3, a, p {
-  font-family: 'PT Sans', sans-serif; }
-
-ul {
-  list-style-type: none; }
-
-.unselectable {
-  outline: none; }
-
-#nav-bar {
-  height: 52px; }
-  #nav-bar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 0 0 5.555%;
-    height: 52px; }
-  #nav-bar li {
-    float: left;
-    margin: 0; }
-    #nav-bar li a {
-      min-width: 5.555%;
-      display: block;
-      padding: 16px;
-      text-align: center;
-      text-decoration: none;
-      color: #404040; }
-    #nav-bar li a:hover {
-      border-bottom: 4px white solid; }
-  #nav-bar #nav-bar-user {
-    float: right;
-    margin-right: 5.555%; }
-  @media (min-width: 925px) {
-    #nav-bar #nav-bar-menu {
-      display: none; } }
-  @media (max-width: 924px) {
-    #nav-bar #nav-bar-features, #nav-bar #nav-bar-pricing, #nav-bar #nav-bar-docs, #nav-bar #nav-bar-support {
-      display: none; } }
-  @media (max-width: 450px) {
-    #nav-bar #nav-bar-login {
-      display: none; } }
-  @media (max-width: 300px) {
-    #nav-bar #nav-bar-signup {
-      display: none; } }
-
 #title-bar {
-  width: 88%;
-  height: 120px;
-  background: #77EC92;
-  padding: 24px 5.555%; }
-  #title-bar h1, #title-bar h3 {
-    color: white;
-    margin: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-underline: none; }
-  #title-bar h1 {
-    font-size: 48px;
-    margin: 8px 0; }
-  #title-bar h3 {
-    font-size: 16px;
-    margin-bottom: 16px; }
-  @media (min-width: 800px) {
-    #title-bar {
-      height: 80px; }
-      #title-bar h1 {
-        margin: 0;
-        width: auto;
-        display: inline;
-        float: left; }
-      #title-bar h3 {
-        margin-top: 12px;
-        margin-left: 24px;
-        width: 92px;
-        display: inline-block; } }
-  @media (max-width: 400px) {
-    #title-bar h3 {
-      width: 77.777%; } }
+  padding: 1em 0;
+  background-color: #77EC91;
+  margin-bottom: 1em;
+}
+#title-bar h4 {
+  color: white;
+  margin: 0;
+  user-select: none;
+}
 
-#core {
-  margin: 5.555%;
-  width: 55.555%;
-  display: inline-block; }
-  #core h1 {
-    color: #404040;
-    margin: 0; }
-  #core p {
-    margin: 16px 0;
-    color: #404040; }
-  #core form {
-    display: block;
-    width: 100%; }
-  #core .list h3 {
-    color: #77EC92;
-    display: inline; }
-  #core .list p {
-    display: inline; }
-  #core #join-mailing-list-email-input {
-    width: calc(100% - 126px);
-    height: 36px;
-    margin: 0;
-    padding: 0 12px;
-    border: 1px solid #CCCCCC;
-    border-radius: 8px;
-    color: #404040;
-    font-size: 1em;
-    font-family: 'PT Sans', sans-serif; }
-  #core #join-mailing-list-submit {
-    width: 96px;
-    height: 36px;
-    padding: 0;
-    border: 1px solid #77EC92;
-    border-radius: 8px;
-    background-color: #77EC92;
-    font-size: 1em;
-    color: white;
-    font-family: 'PT Sans', sans-serif; }
-
-.divider {
-  margin: 36px 11.111%;
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #77EC92;
-  padding: 0; }
-
-#side-bar {
-  float: right;
-  width: calc(22.222% - 1px);
-  padding: 5.555%;
-  color: #404040;
-  border-left: 1px solid #77EC92; }
-  #side-bar h2 {
-    text-align: center; }
-  #side-bar p {
-    font-size: 12px; }
-  #side-bar a {
-    color: #404040; }
-  #side-bar #side-bar-post-info {
-    color: #CCCCCC; }
-  #side-bar .divider {
-    margin: 16px 11.111%; }
-  #side-bar .section {
-    margin-bottom: 36px; }
-
-@media (max-width: 650px) {
-  #content {
-    width: 77.777%; }
-
-  #side-bar {
-    display: none; } }
 #footer {
-  background: #77EC92;
-  width: 100%;
-  color: white; }
-  @media (min-width: 650px) {
-    #footer {
-      height: 216px;
-      padding: 0; }
-      #footer .footer-section {
-        float: left;
-        width: 22%;
-        margin-bottom: 0;
-        margin-left: 3.703%; } }
-  @media (max-width: 649px) {
-    #footer {
-      padding: 32px 0; }
-      #footer .footer-section {
-        width: 88.888%;
-        margin-bottom: 48px; } }
-  #footer a {
-    text-decoration: none;
-    color: inherit; }
-  #footer .footer-section li {
-    margin-bottom: 12px; }
+  border-top: #77EC91 1px solid;
+  padding: 1em 0;
+  margin-top: 1em;
+}
+#footer #center {
+  text-align: center;
+}
+#footer #right {
+  text-align: right;
+}
 
 /*# sourceMappingURL=main.css.map */

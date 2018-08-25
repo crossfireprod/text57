@@ -9,15 +9,15 @@ from .models import User
 # Create your views here.
 
 def signup(request):
-    return render(request, 'user/login.html', {})
+    return render(request, 'user/signup.html', {})
 
 
 def login(request):
     return render(request, 'user/login.html', {})
 
 
-def authenticate(request):
-    user = User.objects.get(username=request.POST.get('username'))
+def login_post(request):
+    user = User.objects.get(email=request.POST.get('email'))
     hash = hashlib.sha256((request.POST.get('password') + user.salt).encode('utf-8')).hexdigest()
     for a in range(0, 4):
         hash = hashlib.sha256(hash.encode('utf-8')).hexdigest()
@@ -27,6 +27,8 @@ def authenticate(request):
     else:
         return redirect('/login')
 
+def signup_post():
+    return redirect('/login')
 
 def logout(request):
     quiet_logout(request)

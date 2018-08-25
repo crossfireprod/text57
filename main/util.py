@@ -1,7 +1,7 @@
 import random
 
 from django.conf import settings
-from ResicaSMS.settings import B64_DIGITS
+from oanevsms.settings import B64_DIGITS
 from django.template import loader
 from sendgrid.helpers.mail import *
 

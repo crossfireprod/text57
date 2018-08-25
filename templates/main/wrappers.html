@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+
+{% block core %}
+
+    <div class="table-container">
+        <div class="table-block footer-push">
+            <div id="title-bar" class="u-full-width row">
+                <div class="offset-by-one column ten columns"><h4>Oanev</h4></div>
+            </div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        <div class="table-block">
+            <div id="footer" class="row offset-by-one column ten columns">
+                <div id="left" class="one-third column"><a href="/terms">Terms of Use</a></div>
+                <div id="center" class="one-third column">© 2018 Oanev</div>
+                <div id="right" class="one-third column"><a href="/contact">Contact</a></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

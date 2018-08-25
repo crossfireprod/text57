@@ -1,0 +1,29 @@
+{% extends "user/base.html" %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form id="signup-form" action="/authenticate" method="post"
+              class="offset-by-three column six columns">{% csrf_token %}
+            <div class="offset-by-two eight columns">
+                <h3>Signup</h3>
+                <div class="row u-full-width">
+                    <label>Name</label>
+                    <input class="u-full-width" type="text" name="name"required>
+                </div>
+                <div class="row u-full-width">
+                    <label>Email</label>
+                    <input class="u-full-width" type="email" name="email" required>
+                </div>
+                <div class="row u-full-width">
+                    <label>Password</label>
+                    <input class="u-full-width" type="password" name="password" required>
+                </div>
+                <div class="row u-full-width">
+                    <button class="six columns button-primary" type="submit" id="login-button">Sign up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
